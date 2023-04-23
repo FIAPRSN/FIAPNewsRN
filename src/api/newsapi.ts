@@ -15,3 +15,17 @@ export async function newsFetch() {
   let result = await articles.json();
   return result.articles;
 }
+
+export async function newsSearch(searchText = '') {
+  let articles = await fetch(
+    `https://newsapi.org/v2/everything?q=${searchText}`,
+    {
+      headers: {
+        'X-API-KEY': utils.key,
+      },
+    },
+  );
+
+  let result = await articles.json();
+  return result.articles;
+}
